@@ -12,6 +12,14 @@ menu ="""
 00) Exit
 Option type the Number for :
 """
+def displayList():
+  print("+----------------+")
+  print("    Todo List :   ")
+  print("+----------------+")
+
+  for index,list in enumerate(todoList):
+    print(index,list)
+
 
 def addTask():
 
@@ -21,16 +29,27 @@ def addTask():
 
   print(f"Task : {task} was adding todo list")
 
-  print("+----------------+")
-  print("    Todo List :   ")
-  print("+----------------+")
-
-  for index,list in enumerate(todoList):
-    print(index,list)
+  displayList()
 
 def editTask():
-  print("edit")
 
+  print("---------------------------------->Processing")
+
+  if(len(todoList) ==0):
+
+    print("TodoList is Empty")
+
+  else:
+
+    displayList()
+
+    findTask = int(input("Edit Mode | Type the index's task # : "))
+    newTask = input("Enter new Task to be replace for : ")
+
+    todoList.remove(todoList[findTask])
+    todoList.insert(findTask,newTask)
+
+    displayList()
 
 def removedTask():
   print("Removed")
