@@ -10,12 +10,23 @@ menu ="""
 2) edit
 3) removed
 00) Exit
-Option type the Number for
+Option type the Number for :
 """
 
 def addTask():
-  print("add")
 
+  task = input("Enter your Task :  ")
+  print("---------------------------------->Processing")
+  todoList.append(task)
+
+  print(f"Task : {task} was adding todo list")
+
+  print("+----------------+")
+  print("    Todo List :   ")
+  print("+----------------+")
+
+  for index,list in enumerate(todoList):
+    print(index,list)
 
 def editTask():
   print("edit")
@@ -28,7 +39,7 @@ def removedTask():
 def Menu():
   while True:
     print(menu)
-    op = int(input(":"))
+    op = int(input())
     if op == 1:
         addTask()
     elif op == 2:
