@@ -52,9 +52,18 @@ def editTask():
     displayList()
 
 def removedTask():
-  print("Removed")
 
+  if(len(todoList) ==0):
 
+    print("TodoList is Empty")
+
+  else:
+    displayList()
+
+    removedTask = int(input("Remove Mode | Type the index's task # : "))
+    todoList.remove(todoList[removedTask])
+
+    displayList()
 def Menu():
   while True:
     print(menu)
