@@ -1,28 +1,67 @@
-op =""
+op = ""
 task = ""
-todoList = []
+todoList = ["banana", "apple", "banana", "apple", "banana", "apple", "banana", "apple", "banana", "mango", "apple",
+            "banana", "apple", "banana", "apple", "banana", "apple", "banana", "apple", "banana", "apple"]
 
-menu ="""
+menu = """
 +-----------------------+
   Todo List 📋 | Menu
 +-----------------------+
 1) add
 2) edit
 3) removed
+4) view
 00) Exit
 Option type the Number for :
 """
+
+
+def view():
+  page = 0
+  pageLimit = 10
+  sizeData = (len(todoList))
+  pages = pageLimit / sizeData
+  start = 0 - pageLimit;
+  while (True):
+    op = input("N for Next | B for Back | Q for QUit : ").lower()
+    if (op == "q"):
+      print("exiting view....")
+      break
+    elif (op == "n"):
+      page += 1
+      start += pageLimit
+      displayItemsByPage(page, pageLimit, sizeData, start)
+
+    elif (op == "b"):
+      if( start <= 0 ):
+        print("You are already at the beginning of the list")
+        continue
+
+      page -= 1
+      start -= pageLimit
+      displayItemsByPage(page, pageLimit, sizeData, start)
+
+
+
+def displayItemsByPage(page, pageLimit, sizeData, start):
+  for i in range(start, pageLimit * page):
+    if i > sizeData - 1:
+      print("No more data after this point....")
+      break
+    else:
+      print(i, ":", todoList[i])
+
+
 def displayList():
   print("+----------------+")
   print("    Todo List :   ")
   print("+----------------+")
 
-  for index,list in enumerate(todoList):
-    print(index,list)
+  for index, item in enumerate(todoList):
+    print(index, item)
 
 
 def addTask():
-
   task = input("Enter your Task :  ")
   print("---------------------------------->Processing")
   todoList.append(task)
@@ -31,11 +70,11 @@ def addTask():
 
   displayList()
 
-def editTask():
 
+def editTask():
   print("---------------------------------->Processing")
 
-  if(len(todoList) ==0):
+  if (len(todoList) == 0):
 
     print("TodoList is Empty")
 
@@ -47,13 +86,13 @@ def editTask():
     newTask = input("Enter new Task to be replace for : ")
 
     todoList.remove(todoList[findTask])
-    todoList.insert(findTask,newTask)
+    todoList.insert(findTask, newTask)
 
     displayList()
 
-def removedTask():
 
-  if(len(todoList) ==0):
+def removedTask():
+  if (len(todoList) == 0):
 
     print("TodoList is Empty")
 
@@ -64,20 +103,25 @@ def removedTask():
     todoList.remove(todoList[removedTask])
 
     displayList()
+
+
 def Menu():
   while True:
     print(menu)
     op = int(input())
     if op == 1:
-        addTask()
+      addTask()
     elif op == 2:
-        editTask()
+      editTask()
     elif op == 3:
-        removedTask()
-    elif op == 00 :
+      removedTask()
+    elif op == 4:
+      view()
+    elif op == 00:
       print("exiting")
       break
     else:
       print("Invalid option, please try again")
+
 
 Menu()
