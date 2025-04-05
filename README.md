@@ -1,4 +1,12 @@
 # TODO LIST APP
+Welcome to the **TODO LIST APP**!  
+You can | add ➕| edit 📝 | removed🧹 | view 🔭| settting 🛠️. 
+- Use it to create a Task or a list of Items:
+---
+
+## 🔧 Features
+- **Pagination | Custom Setting View.
+
 
 ## add function
 ![image](https://github.com/user-attachments/assets/8cead976-a6af-49ad-b173-df17f5b8832e)
