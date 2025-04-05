@@ -1,7 +1,8 @@
+pageLimit = 10
 op = ""
 task = ""
-todoList = ["banana", "apple", "banana", "apple", "banana", "apple", "banana", "apple", "banana", "mango", "apple",
-            "banana", "apple", "banana", "apple", "banana", "apple", "banana", "apple", "banana", "apple"]
+todoList = ["banana", "apple", "banana", "apple", "banana", "apple", "banana", "apple", "banana", "mango", "lime",
+            "grape", "apple", "orange", "cherry", "banana", "apple", "banana", "apple", "banana", "apple"]
 
 menu = """
 +-----------------------+
@@ -11,17 +12,20 @@ menu = """
 2) edit
 3) removed
 4) view
+5) Setting
 00) Exit
 Option type the Number for :
 """
+def appSetting():
+  print("change the page Limitation")
+  setValue = input("Type the limitation : ")
+  return setValue
 
-
-def view():
+def view(pageLimit):
   page = 0
-  pageLimit = 10
   sizeData = (len(todoList))
   pages = pageLimit / sizeData
-  start = 0 - pageLimit;
+  start = 0 - pageLimit
   while (True):
     op = input("N for Next | B for Back | Q for QUit : ").lower()
     if (op == "q"):
@@ -106,6 +110,7 @@ def removedTask():
 
 
 def Menu():
+  global pageLimit
   while True:
     print(menu)
     op = int(input())
@@ -116,10 +121,13 @@ def Menu():
     elif op == 3:
       removedTask()
     elif op == 4:
-      view()
+      view(pageLimit)
+    elif op == 5:
+      pageLimit = int (appSetting())
     elif op == 00:
       print("exiting")
       break
+
     else:
       print("Invalid option, please try again")
 
